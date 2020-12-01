@@ -2,12 +2,10 @@ package ba.unsa.etf.rpr;
 
 public class Profesor {
     String Ime,prezime;
-    int norma;
 
-    public Profesor(String ime, String prezime, int norma) {
+    public Profesor(String ime, String prezime) {
         Ime = ime;
         this.prezime = prezime;
-        this.norma = norma;
     }
 
     public String getIme() {
@@ -24,14 +22,6 @@ public class Profesor {
 
     public void setPrezime(String prezime) {
         this.prezime = prezime;
-    }
-
-    public int getNorma() {
-        return norma;
-    }
-
-    public void setNorma(int norma) {
-        this.norma = norma;
     }
 
     @Override

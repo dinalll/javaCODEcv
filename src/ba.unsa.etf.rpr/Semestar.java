@@ -6,10 +6,9 @@ public class Semestar {
     int brSemestra,ciklus;
     ArrayList<Predmet> predmeti= new ArrayList<Predmet>();
 
-    public Semestar(int brSemestra, int ciklus, ArrayList<Predmet> predmeti) {
+    public Semestar(int brSemestra, int ciklus) {
         this.brSemestra = brSemestra;
         this.ciklus = ciklus;
-        this.predmeti = predmeti;
     }
 
     public int getBrSemestra() {
@@ -37,5 +36,16 @@ public class Semestar {
     }
     void dodajPredmet(Predmet p){
         predmeti.add(p);
+    }
+    @Override
+    public String toString() {
+        String izlaz="\n";
+        for(int i=0;i<this.getPredmeti().size();i++){
+            izlaz+=" "+(i+1)+"-"+predmeti.get(i).getNazivPredmeta();
+            if(predmeti.get(i) instanceof ObavezniPredmet) izlaz+="(O) ";
+            else izlaz+="(I) ";
+        }
+        return "\n" + brSemestra+". Semestar " + ciklus+
+                ". ciklusa studija ,Predmeti: " + izlaz;
     }
 }

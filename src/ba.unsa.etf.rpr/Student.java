@@ -2,11 +2,12 @@ package ba.unsa.etf.rpr;
 
 public class Student {
     private String ime, prezime;
-    private static int brIndeksa=10000;
+    private static int br=10000;
+    int brIndeksa;
     public Student(String ime, String prezime) {
         this.ime = ime;
         this.prezime = prezime;
-        this.brIndeksa++;
+        this.brIndeksa=br++;
     }
 
     public String getIme() {
@@ -25,12 +26,12 @@ public class Student {
         this.prezime = prezime;
     }
 
-    public static int getBrIndeksa() {
+    public int getBrIndeksa() {
         return brIndeksa;
     }
 
-    public static void setBrIndeksa(int brIndeksa) {
-        Student.brIndeksa = brIndeksa;
+    public void setBrIndeksa(int brIndeksa) {
+        this.brIndeksa = brIndeksa;
     }
     @Override
     public int hashCode() {

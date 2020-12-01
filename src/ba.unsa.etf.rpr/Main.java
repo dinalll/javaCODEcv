@@ -6,9 +6,9 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-       /* Fakultet faks= new Fakultet("Fakultet");
+        Fakultet faks= new Fakultet("Fakultet");
         Semestar s= new Semestar(1,1);
-        Predmet p1=new ObavezniPredmet("Historija",50,new Profesor("Histo","Histic"),6);
+        /*Predmet p1=new ObavezniPredmet("Historija",50,new Profesor("Histo","Histic"),6);
         Predmet p2=new ObavezniPredmet("Matematika",50,new Profesor("Matko","Matic"),7);
         Predmet p3=new ObavezniPredmet("Fiziologija",50,new Profesor("Fizo","Fistic"),8);
         Predmet p4=new IzborniPredmet("Dinamika",50,new Profesor("Dino","Dinic"),6);
@@ -22,13 +22,14 @@ public class Main {
         p4.dodajStudenta(new Student("Niko","Nikic"));
         p5.dodajStudenta(new Student("Niko","Nikic"));
         p6.dodajStudenta(new Student("Niko","Nikic"));
-        System.out.println(faks.getSemestar().toString());
+        System.out.println(faks.getSemestar().toString());*/
         for(;;){
             Scanner ulaz = new Scanner(System.in);
             System.out.println("Unesi ime fakulteta: ");
             Fakultet faks1 = new Fakultet(ulaz.nextLine());
             System.out.println("\nUnesi broj semsetra i ciklusa: ");
             Semestar s1 = new Semestar(ulaz.nextInt(),ulaz.nextInt());
+            faks.dodajSemestar(s1);
             System.out.println("\nUnesi broj predmeta u semestru:");
             int predmeti=ulaz.nextInt();
             for(int i=0;i<predmeti;i++){
@@ -44,17 +45,36 @@ public class Main {
                 }
             }
             for(;;) {
-                System.out.println("\n" + s1.toString() + "\n Dodajte studente na kurs (odaberite redni broj Izbornog kursa(I) ili 0 za prekid dodavanja: ");
+                System.out.println("\n" + s1.toString() + "\n Dodajte studente na kurs (unesite redni broj Izbornog kursa(I) ili 0 za prekid dodavanja: ");
                 int predmet = ulaz.nextInt();
-                if(predmet==-1)break;
+                if(predmet==0)break;
                 System.out.println("\nUnesite Ime i prezime studenta: ");
                 s1.getPredmeti().get(predmet - 1).dodajStudenta(new Student(ulaz.next(), ulaz.next()));
             }
-        System.out.println("\n Unesite broj komande za:\n 1)Informacije o normi profesora \n2)Sortiranje profesora po normi " +
-                "\n3)sortiranje profesora po broju studenata na predmetima \n4)Za datog studenta ispisi prepis \n5)Za izlaz iz programa");
+            for(;;) {
+                System.out.println("\n Unesite broj komande za:\n 1)Informacije o normi profesora \n2)Sortiranje profesora po normi " +
+                        "\n3)sortiranje profesora po broju studenata na predmetima \n4)Za datog studenta ispisi prepis \n0)Za izlaz iz programa");
+                int komanda= ulaz.nextInt();
+                if(komanda==0)break;
+                else if(komanda==1){
+                    System.out.println(faks.dajSNormom());
+                }
+                else if(komanda==2){
+                    faks.sortirajPoNormi();
+                }
+                else if(komanda==3){
+                    faks.sortirajPoBrojuStudenata();
+                }
+                else if(komanda==4){
+                    System.out.println("\nUnesite podatke o studentu u formatu Ime Prezime brIndeksa: ");
+                    Student prepis= new Student(ulaz.next(),ulaz.next());
+                    prepis.setBrIndeksa(ulaz.nextInt());
+                    faks.prepisOcjena(prepis);
+                }
+            }
 
         }
-        */
+        /*
         Fakultet faks= new Fakultet("Fakultet");
         Semestar s= new Semestar(1,1);
         Predmet p1=new ObavezniPredmet("Historija",50,new Profesor("Histo","Histic"),6);
@@ -67,18 +87,26 @@ public class Main {
         Predmet p9=new IzborniPredmet("Fizicko",50,new Profesor("Fizo","Fizic"),6);
         Predmet p10=new IzborniPredmet("Fizicko",50,new Profesor("Fizo","Fizic"),6);
         s.dodajPredmet(p1);s.dodajPredmet(p2);s.dodajPredmet(p3);s.dodajPredmet(p4);
+        Student student= new Student("Student","Studić");
         for(int i=0;i<5;i++){
             s.dodajPredmet(p5);s.dodajPredmet(p7);
-            p1.dodajStudenta(new Student("Niko","Nikic"));
-            p2.dodajStudenta(new Student("Niko","Nikic"));
-            p3.dodajStudenta(new Student("Niko","Nikic"));
-            p4.dodajStudenta(new Student("Niko","Nikic"));
-            p5.dodajStudenta(new Student("Niko","Nikic"));
         }
+        p1.dodajStudenta(student);
+        p2.dodajStudenta(student);
+        p3.dodajStudenta(student);
+        p4.dodajStudenta(student);
+        p5.dodajStudenta(student);
+        p1.ocjeni(student,10);
+        p2.ocjeni(student,9);
+        p3.ocjeni(student,9);
+        p4.ocjeni(student,9);
+
         faks.dodajSemestar(s);
         System.out.println(faks.dajSNormom());
         faks.sortirajPoNormi();
         faks.sortirajPoBrojuStudenata();
-
+        p1.dajOcjenu(student);
+        System.out.println(faks.prepisOcjena(student));
+        */
     }
 }

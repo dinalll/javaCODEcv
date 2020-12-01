@@ -9,6 +9,11 @@ public class Student {
         this.prezime = prezime;
         this.brIndeksa=br++;
     }
+    public Student(String ime, String prezime,int brIndeksa){
+        this.ime=ime;
+        this.prezime=prezime;
+        this.brIndeksa=brIndeksa;
+    }
 
     public String getIme() {
         return ime;

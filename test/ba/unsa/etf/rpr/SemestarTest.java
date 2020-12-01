@@ -21,4 +21,15 @@ class SemestarTest {
         semestar.dodajPredmet(po);
         assertEquals(3,semestar.getPredmeti().size());
     }
+    @Test
+    void testToString(){
+        semestar.dodajPredmet(p);
+        semestar.dodajPredmet(pi);
+        semestar.dodajPredmet(po);
+        pi.dodajStudenta(s1);
+        p.dodajStudenta(s1);
+        po.dodajStudenta(s1);
+        assertEquals("\n1. Semestar 1. ciklusa studija ,Predmeti: \n" +
+                " 1-MATEMATIKA(I)  2-FIZIKA(I)  3-HISTORIJA(O) ",semestar.toString());
+    }
 }

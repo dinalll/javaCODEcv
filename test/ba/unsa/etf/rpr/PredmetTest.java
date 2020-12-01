@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class PredmetTest {
     Profesor pr = new Profesor("Mito","Mitić");
     Predmet p = new Predmet("MATEMATIKA",10,pr,6);
+    Predmet p1 = new Predmet("MATEMATIKA2",101,pr,6);
     Student s=new Student ("Studo","Studić");
     Student s1= new Student ("Pado","Padić");
     Student s2= new Student ("Pado","Padić");
@@ -44,6 +45,7 @@ class PredmetTest {
     @Test
     void testEquals(){
         assertEquals(true,p.equals(p));
+        assertEquals(false,p1.equals(p));
     }
     @Test
     void testIzborniPredmet(){
@@ -52,5 +54,11 @@ class PredmetTest {
     @Test
     void testObavezniPredmet(){
         assertEquals(true,po instanceof ObavezniPredmet);
+    }
+
+    @Test
+    void testToString() {
+        p.dodajStudenta(s);
+        assertEquals("\n Predmet: MATEMATIKA\nStudo Studić 10000 0\n",p.toString());
     }
 }

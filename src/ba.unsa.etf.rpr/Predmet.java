@@ -71,7 +71,7 @@ public class Predmet {
         for(Map.Entry<Student,Integer> entry: lista.entrySet()){
             if(entry.getKey().equals(s))return entry.getValue();
         }
-        throw new IllegalArgumentException("Student nije ocjenjen");
+        return 0;
     }
     @Override
     public boolean equals(Object a){

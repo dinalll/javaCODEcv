@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr;
 
 import java.util.*;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -76,6 +77,7 @@ public class Fakultet {
         ponavljanje.entrySet().stream()
                 .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
                 .forEach(System.out::println);
+
     }
     public void sortirajPoBrojuStudenata(){
         Map<Profesor, Integer> ponavljanje = new HashMap<Profesor, Integer>();
@@ -95,8 +97,19 @@ public class Fakultet {
         System.out.println("\nLista profesora sortirana po broju studenata: ");
         ponavljanje.entrySet().stream()
                 .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
-                .forEach(System.out::println);
-
+                .forEach((System.out::println));
+    }
+    public String prepisOcjena(Student s){
+        String povratni="\nStudent :"+s.toString();
+        for(Semestar c:this.getSemestar()){
+            for(int i=0;i<c.getPredmeti().size();i++){
+                if(c.getPredmeti().get(i).dajOcjenu(s)!=0) {
+                    povratni += "\n" + c.getPredmeti().get(i).getNazivPredmeta() + " : ";
+                    povratni +="Ocjena (" + c.getPredmeti().get(i).dajOcjenu(s)+ ")";
+                }
+            }
+        }
+        return povratni;
     }
 }
 

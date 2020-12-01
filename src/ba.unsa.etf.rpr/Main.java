@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        Fakultet faks= new Fakultet("Fakultet");
+       /* Fakultet faks= new Fakultet("Fakultet");
         Semestar s= new Semestar(1,1);
         Predmet p1=new ObavezniPredmet("Historija",50,new Profesor("Histo","Histic"),6);
         Predmet p2=new ObavezniPredmet("Matematika",50,new Profesor("Matko","Matic"),7);
@@ -54,5 +54,31 @@ public class Main {
                 "\n3)sortiranje profesora po broju studenata na predmetima \n4)Za datog studenta ispisi prepis \n5)Za izlaz iz programa");
 
         }
+        */
+        Fakultet faks= new Fakultet("Fakultet");
+        Semestar s= new Semestar(1,1);
+        Predmet p1=new ObavezniPredmet("Historija",50,new Profesor("Histo","Histic"),6);
+        Predmet p2=new ObavezniPredmet("Matematika",50,new Profesor("Matko","Matic"),7);
+        Predmet p3=new ObavezniPredmet("Fiziologija",50,new Profesor("Fizo","Fistic"),8);
+        Predmet p4=new IzborniPredmet("Dinamika",50,new Profesor("Dino","Dinic"),6);
+        Predmet p5=new IzborniPredmet("Likovno",50,new Profesor("Liko","Likic"),6);
+        Predmet p7=new IzborniPredmet("Fizicko",50,new Profesor("Fizo","Fizic"),6);
+        Predmet p8=new IzborniPredmet("Fizicko",50,new Profesor("Fizo","Fizic"),6);
+        Predmet p9=new IzborniPredmet("Fizicko",50,new Profesor("Fizo","Fizic"),6);
+        Predmet p10=new IzborniPredmet("Fizicko",50,new Profesor("Fizo","Fizic"),6);
+        s.dodajPredmet(p1);s.dodajPredmet(p2);s.dodajPredmet(p3);s.dodajPredmet(p4);
+        for(int i=0;i<5;i++){
+            s.dodajPredmet(p5);s.dodajPredmet(p7);
+            p1.dodajStudenta(new Student("Niko","Nikic"));
+            p2.dodajStudenta(new Student("Niko","Nikic"));
+            p3.dodajStudenta(new Student("Niko","Nikic"));
+            p4.dodajStudenta(new Student("Niko","Nikic"));
+            p5.dodajStudenta(new Student("Niko","Nikic"));
+        }
+        faks.dodajSemestar(s);
+        System.out.println(faks.dajSNormom());
+        faks.sortirajPoNormi();
+        faks.sortirajPoBrojuStudenata();
+
     }
 }

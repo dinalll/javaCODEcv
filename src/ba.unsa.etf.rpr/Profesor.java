@@ -1,5 +1,7 @@
 package ba.unsa.etf.rpr;
 
+import java.util.ArrayList;
+
 public class Profesor {
     String Ime,prezime;
 
@@ -27,5 +29,11 @@ public class Profesor {
     @Override
     public String toString() {
         return  Ime +" "+ prezime;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        Profesor p= (Profesor) obj;
+        return (p.getIme()+p.getPrezime()).equalsIgnoreCase(this.getIme()+this.getPrezime());
     }
 }
